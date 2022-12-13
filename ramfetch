@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+BLK='\e[0;30m'
+RED='\e[0;31m'
+GRN='\e[2;32m'
+YEL='\e[0;33m'
+BLU='\e[0;34m'
+PURP='\e[0;35m'
+CYN='\e[0;36m'
+WHT='\e[0;37m'
+
+host_user="$(echo -e ${GRN}$USER${WHT}@${YEL}$HOSTNAME${WHT})"
+memtotal="$(cat /proc/meminfo | head -n1 | awk '{print $2}') kB"
+memfree="$(cat /proc/meminfo | grep MemFree | awk '{print $2}') kB"
+memavailable="$(cat /proc/meminfo | grep MemAvailable | awk '{print $2}') kB"
+buffers="$(cat /proc/meminfo | grep Buffers | awk '{print $2}') kB"
+cached="$(cat /proc/meminfo | grep Cached | head -n1 | awk '{print $2}') kB"
+swaptotal="$(cat /proc/meminfo | grep SwapTotal | awk '{print $2}') kB"
+swapfree="$(cat /proc/meminfo | grep SwapFree | awk '{print $2}') kB"
+zswap="$(cat /proc/meminfo | grep Zswap | head -n1 | awk '{print $2}') kB"
+zswapped="$(cat /proc/meminfo | grep Zswapped | head -n1 | awk '{print $2}') kB"
+swapcached="$(cat /proc/meminfo | grep SwapCached | awk '{print $2}') kB"
+dirty="$(cat /proc/meminfo | grep Dirty | awk '{print $2}') kB"
+colorblocks="$(echo -e ${WHITE}██${RED}██${GRN}██${BLU}██${YEL}██${PURP}██${CYN}██${BLK}██${WHT})"
+kernel_stack="$(cat /proc/meminfo | grep KernelStack | awk '{print $2}') kB"
+per_cpu="$(cat /proc/meminfo | grep Percpu | awk '{print $2}') kB"
+
+yellowpart="$(echo -e ${YEL})"
+greenpart="$(echo -e ${GRN})"
+blackpart="$(echo -e ${BLK})"
+whitepart="$(echo -e ${WHT})"
+cat <<EOF
+
+$greenpart   ████████████████████████████     $host_user
+$greenpart ████████████████████████████████ $whitepart   -------------
+$greenpart ████      ████      ███      ███ $whitepart  RAM Total: $memtotal
+$greenpart ████      ████      ███      ███ $whitepart  RAM Free: $memfree
+$greenpart ████      ████      ███      ███ $whitepart  RAM Available: $memavailable
+$greenpart ████      ████      ███      ███ $whitepart  Buffers: $buffers
+$greenpart ████████████████████████████████$whitepart   Cached: $cached
+$greenpart ███   ████   █████   █████   ███$whitepart   Swap Total: $swaptotal
+$yellowpart ███   ████   █████   █████   ███$whitepart   Swap Free: $swapfree
+                                    Zswap: $zswap
+                                    Zswapped: $zswapped
+                                    Swap Cached: $swapcached
+                                    Dirty: $dirty
+                                    Kernel Stack: $kernel_stack
+                                    Per CPU: $per_cpu
+
+                                    $colorblocks
+
+EOF
