@@ -2,7 +2,7 @@
   <div>
     <h1>ramfetch</h1>
     <p>a fetch which displays memory info using /proc/meminfo.</p>
-    <img src="https://img.shields.io/github/license/gentoo-btw/ramfetch?style=for-the-badge">
+    <img src="">
     <img src="https://img.shields.io/github/stars/gentoo-btw/ramfetch?style=for-the-badge">
     <img src="https://img.shields.io/github/forks/gentoo-btw/ramfetch?style=for-the-badge">
   </div>
