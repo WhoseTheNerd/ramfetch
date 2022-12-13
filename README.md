@@ -21,7 +21,7 @@ $ git clone https://github.com/gentoo-btw/ramfetch
 ```
 Install ramfetch using `make`.
 ```bash
-$ make
+# make
 ```
 ## 1.1 - Manual install
 Copy the ramfetch file to /usr/local/bin.
@@ -35,4 +35,15 @@ Make it executable.
 Execute ramfetch.
 ```bash
 $ ramfetch
+```
+
+# 2 - Uninstall
+Uninstall ramfetch using `make`.
+```bash
+# make uninstall
+```
+## 2.1 - Manual Uninstall
+Uninstall ramfetch by removing the ramfetch file.
+```bash
+# rm -rf /usr/local/bin/ramfetch
 ```
