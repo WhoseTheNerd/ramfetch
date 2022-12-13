@@ -1,5 +1,27 @@
 #!/usr/bin/env bash
+# MIT License
+#
+# Copyright (c) 2022 gentoo-btw
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+# colors
 BLK='\e[0;30m'
 RED='\e[0;31m'
 GRN='\e[2;32m'
@@ -9,6 +31,7 @@ PURP='\e[0;35m'
 CYN='\e[0;36m'
 WHT='\e[0;37m'
 
+# hostname, user and other stuff
 host_user="$(echo -e ${GRN}$USER${WHT}@${YEL}$HOSTNAME${WHT})"
 memtotal="$(cat /proc/meminfo | head -n1 | awk '{print $2}') kB"
 memfree="$(cat /proc/meminfo | grep MemFree | awk '{print $2}') kB"
@@ -25,10 +48,12 @@ colorblocks="$(echo -e ${WHITE}██${RED}██${GRN}██${BLU}██${YEL}�
 kernel_stack="$(cat /proc/meminfo | grep KernelStack | awk '{print $2}') kB"
 per_cpu="$(cat /proc/meminfo | grep Percpu | awk '{print $2}') kB"
 
+# for ascii logo
 yellowpart="$(echo -e ${YEL})"
 greenpart="$(echo -e ${GRN})"
 blackpart="$(echo -e ${BLK})"
 whitepart="$(echo -e ${WHT})"
+# output
 cat <<EOF
 
 $greenpart   ████████████████████████████     $host_user
