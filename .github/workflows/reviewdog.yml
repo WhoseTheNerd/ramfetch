@@ -2,7 +2,7 @@ name: reviewdog
 on: [pull_request]
 jobs:
   reviewdog:
-    name: reviewdog
+    name: Reviewdog
     runs-on: ubuntu-latest
     steps:
       - name: checkout
