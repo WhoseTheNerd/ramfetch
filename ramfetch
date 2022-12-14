@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 # MIT License
 #
 # Copyright (c) 2022 gentoo-btw
@@ -31,40 +31,55 @@ PURP='\e[0;35m'
 CYN='\e[0;36m'
 WHT='\e[0;37m'
 
+# Sed input. Basically use regex to get the number + kB part and replace it itself to ensure the capture group is printed
+# 's/[^0-9]*\([0-9]* kB\)/\1/'
+# 's' - subsitution
+# '/' - regex start
+# '[^0-9]*' - match all except 0-9 zero or more times
+# '\' - escape parenthesis
+# '(' - capture group, everything inside will be saved as result of it
+# '[0-9]* kB' match 0-9 zero or more times and kB must be end of it.
+# '\' - escape parenthesis
+# ')' - capture group close
+# '/' subsitution end, replace start
+# '\1' - everything from capture group
+# '/' - end replace
+
 while read -r; do
     case "${REPLY}" in
-        (MemTotal:*)        memtotal="${REPLY//[^0-9]/}" ;;
-        (MemFree:*)         memfree="${REPLY//[^0-9]/}" ;;
-        (MemAvailable:*)    memavailable="${REPLY//[^0-9]/}" ;;
-        (Buffers:*)         buffers="${REPLY//[^0-9]/}" ;;
-        (Cached:*)          cached="${REPLY//[^0-9]/}" ;;
-        (SwapTotal:*)       swaptotal="${REPLY//[^0-9]/}" ;;
-        (SwapFree:*)        swapfree="${REPLY//[^0-9]/}" ;;
-        (Zswap:*)           zswap="${REPLY//[^0-9]/}" ;;
-        (Zswapped:*)        zswapped="${REPLY//[^0-9]/}" ;;
-        (SwapCached:*)      swapcached="${REPLY//[^0-9]/} " ;;
-        (Dirty:*)           dirty="${REPLY//[^0-9]/} " ;;
-        (KernelStack:*)     kernel_stack="${REPLY//[^0-9]/} " ;;
-        (Percpu:*)          per_cpu="${REPLY//[^0-9]/} " ;;
+        (MemTotal:*)        memtotal=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (MemFree:*)         memfree=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (MemAvailable:*)    memavailable=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (HugePages_Free:*)  hugepg_free=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\)/\1/' | numfmt --g) ;;                                            
+        (HugePages_Total:*) hugepg_total=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\)/\1/' | numfmt --g) ;; 
+        (Buffers:*)         buffers=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (Cached:*)          cached=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (SwapTotal:*)       swaptotal=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (SwapFree:*)        swapfree=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (Zswap:*)           zswap=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (Zswapped:*)        zswapped=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (SwapCached:*)      swapcached=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (Dirty:*)           dirty=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (KernelStack:*)     kernel_stack=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g ) ;;
+        (Percpu:*)          per_cpu=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
     esac
 done < /proc/meminfo
 
 # colorblocks/hostme
-host_user="$(printf ${GRN}$USER${WHT}@${YEL}$HOSTNAME${WHT})"
-colorblocks="$(printf ${WHITE}██${RED}██${GRN}██${BLU}██${YEL}██${PURP}██${CYN}██${BLK}██${WHT})"
+HOSTNAME=$(hostname)
+host_user="$(printf "%b%s%b%c%b%s%b" "${GRN}" "$USER" "${WHT}" "@" "${YEL}" "$HOSTNAME" "${WHT}")"
+colorblocks="$(printf "%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b" "${WHITE}" "██" "${RED}" "██" "${GRN}" "██" "${BLU}" "██" "${YEL}" "██" "${PURP}" "██" "${CYN}" "██" "${BLK}" "██" "${WHT}")"
 # for ascii logo
-yellowpart="$(printf ${YEL})"
-greenpart="$(printf ${GRN})"
-end="$(printf ${WHT})"
+yellowpart="$(printf "%b" "${YEL}")"
+greenpart="$(printf "%b" "${GRN}")"
+end="$(printf "%b" "${WHT}")"
 
-# Formatting to display commas (increases readability)
-unit="kB"
-
-for value in memtotal memfree memavailable buffers cached swaptotal swapfree zswap zswapped dirty kernel_stack per_cpu; 
+# formatting
+for value in memtotal memfree memavailable buffers cached swaptotal swapfree zswap zswapped dirty kernel_stack per_cpu hugepg_free hugepg_total; 
 do
 	if [ -z "${!value}" ]; 
 	then eval $value="null";
-	else eval $value="$(numfmt --grouping --invalid='ignore' ${!value})";
+	else eval $value="$(numfmt --grouping --invalid='ignore' --to=iec-i --suffix=B --format="%9.2f" ${!value})";
 	fi
 done
 
@@ -73,19 +88,21 @@ cat <<EOF
 
 $greenpart   ████████████████████████████     $host_user
 $greenpart ████████████████████████████████ $end   -------------
-$greenpart ████      ████      ███      ███ $end  RAM Total: $(echo -e "\t\t") $memtotal $unit
-$greenpart ████      ████      ███      ███ $end  RAM Free:  $(echo -e "\t\t") $memfree $unit
-$greenpart ████      ████      ███      ███ $end  RAM Available: $(echo -e "\t") $memavailable $unit
-$greenpart ████      ████      ███      ███ $end  Buffers: $(echo -e "\t\t") $buffers $unit
-$greenpart ████████████████████████████████$end   Cached: $(echo -e "\t\t") $cached $unit
-$greenpart ███   ████   █████   █████   ███$end   Swap Total: $(echo -e "\t") $swaptotal $unit
-$yellowpart ███   ████   █████   █████   ███$end   Swap Free: $(echo -e "\t\t") $swapfree $unit
-				    Zswap: $(echo -e "\t\t") $zswap $unit
-                                    Zswapped: $(echo -e "\t\t") $zswapped $unit
-                                    Swap Cached: $(echo -e "\t") $swapcached $unit
-                                    Dirty: $(echo -e "\t\t") $dirty $unit
-                                    Kernel Stack: $(echo -e "\t") $kernel_stack $unit
-                                    Per CPU: $(echo -e "\t\t") $per_cpu $unit
+$greenpart ████      ████      ███      ███ $end  RAM Total: $(echo -e "\t\t") $memtotal
+$greenpart ████      ████      ███      ███ $end  RAM Free: $(echo -e "\t\t") $memfree
+$greenpart ████      ████      ███      ███ $end  RAM Available: $(echo -e "\t") $memavailable
+$greenpart ████      ████      ███      ███ $end  Buffers: $(echo -e "\t\t") $buffers
+$greenpart ████████████████████████████████$end   Cached: $(echo -e "\t\t") $cached
+$greenpart ███   ████   █████   █████   ███$end   Swap Total: $(echo -e "\t") $swaptotal
+$yellowpart ███   ████   █████   █████   ███$end   Swap Free:  $(echo -e "\t\t") $swapfree
+                                    Zswap: $(echo -e "\t\t") $zswap
+                                    Zswapped: $(echo -e "\t\t") $zswapped
+                                    Swap Cached: $(echo -e "\t") $swapcached
+                                    Dirty: $(echo -e "\t\t") $dirty
+                                    Kernel Stack: $(echo -e "\t") $kernel_stack
+                                    Per CPU: $(echo -e "\t\t") $per_cpu:-null
+                                    HugePages Free: $(echo -e "\t") $hugepg_free                                                                           
+                                    HugePages Total: $(echo -e "\t") $hugepg_total
 
                                     $colorblocks
 
