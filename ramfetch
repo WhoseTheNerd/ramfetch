@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # MIT License
 #
 # Copyright (c) 2022 gentoo-btw
@@ -45,7 +45,7 @@ WHT='\e[0;37m'
 # '\1' - everything from capture group
 # '/' - end replace
 
-while read -r; do
+while read -r REPLY; do
     case "${REPLY}" in
         (MemTotal:*)        memtotal=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
         (MemFree:*)         memfree=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
@@ -75,11 +75,16 @@ greenpart="$(printf "%b" "${GRN}")"
 end="$(printf "%b" "${WHT}")"
 
 # formatting
+
+run_command() {
+  declare -r $1="$(numfmt --to=iec-i --suffix=B --format="%9.2f" --invalid='ignore' ${!1})"
+}
+
 for value in memtotal memfree memavailable buffers cached swaptotal swapfree zswap zswapped dirty kernel_stack per_cpu hugepg_free hugepg_total; 
 do
 	if [ -z "${!value}" ]; 
 	then eval $value="null";
-	else eval $value="$(numfmt --grouping --invalid='ignore' --to=iec-i --suffix=B --format="%9.2f" ${!value})";
+	else run_command $value;
 	fi
 done
 
@@ -94,13 +99,13 @@ $greenpart ████      ████      ███      ███ $end  RA
 $greenpart ████      ████      ███      ███ $end  Buffers: $(echo -e "\t\t") $buffers
 $greenpart ████████████████████████████████$end   Cached: $(echo -e "\t\t") $cached
 $greenpart ███   ████   █████   █████   ███$end   Swap Total: $(echo -e "\t") $swaptotal
-$yellowpart ███   ████   █████   █████   ███$end   Swap Free:  $(echo -e "\t\t") $swapfree
+$yellowpart ███   ████   █████   █████   ███$end   Swap Free:  $(echo -e "\t") $swapfree
                                     Zswap: $(echo -e "\t\t") $zswap
                                     Zswapped: $(echo -e "\t\t") $zswapped
                                     Swap Cached: $(echo -e "\t") $swapcached
                                     Dirty: $(echo -e "\t\t") $dirty
                                     Kernel Stack: $(echo -e "\t") $kernel_stack
-                                    Per CPU: $(echo -e "\t\t") $per_cpu:-null
+                                    Per CPU: $(echo -e "\t\t") $per_cpu
                                     HugePages Free: $(echo -e "\t") $hugepg_free                                                                           
                                     HugePages Total: $(echo -e "\t") $hugepg_total
 
