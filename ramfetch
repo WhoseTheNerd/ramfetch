@@ -47,19 +47,21 @@ WHT='\e[0;37m'
 
 while read -r; do
     case "${REPLY}" in
-        (MemTotal:*)        memtotal=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/') ;;
-        (MemFree:*)         memfree=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/') ;;
-        (MemAvailable:*)    memavailable=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/') ;;
-        (Buffers:*)         buffers=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/') ;;
-        (Cached:*)          cached=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/') ;;
-        (SwapTotal:*)       swaptotal=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/') ;;
-        (SwapFree:*)        swapfree=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/') ;;
-        (Zswap:*)           zswap=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/') ;;
-        (Zswapped:*)        zswapped=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/') ;;
-        (SwapCached:*)      swapcached=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/') ;;
-        (Dirty:*)           dirty=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/') ;;
-        (KernelStack:*)     kernel_stack=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/') ;;
-        (Percpu:*)          per_cpu=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/') ;;
+        (MemTotal:*)        memtotal=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (MemFree:*)         memfree=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (MemAvailable:*)    memavailable=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (HugePages_Free:*)  hugepg_free=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\)/\1/' | numfmt --g) ;;                                            
+        (HugePages_Total:*) hugepg_total=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\)/\1/' | numfmt --g) ;; 
+        (Buffers:*)         buffers=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (Cached:*)          cached=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (SwapTotal:*)       swaptotal=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (SwapFree:*)        swapfree=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (Zswap:*)           zswap=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (Zswapped:*)        zswapped=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (SwapCached:*)      swapcached=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (Dirty:*)           dirty=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (KernelStack:*)     kernel_stack=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g ) ;;
+        (Percpu:*)          per_cpu=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
     esac
 done < /proc/meminfo
 
@@ -89,6 +91,8 @@ $yellowpart ███   ████   █████   █████   █�
                                     Dirty: ${dirty:-null}
                                     Kernel Stack: ${kernel_stack:-null}
                                     Per CPU: ${per_cpu:-null}
+                                    HugePages Free: ${hugepg_free:-null}                                                                            
+                                    HugePages Total: ${hugepg_total:-null}  
 
                                     $colorblocks
 
