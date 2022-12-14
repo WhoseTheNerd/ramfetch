@@ -36,10 +36,10 @@ WHT='\e[0;37m'
 # 's' - subsitution
 # '/' - regex start
 # '[^0-9]*' - match all except 0-9 zero or more times
-# '\' - escape parentheses
+# '\' - escape parenthesis
 # '(' - capture group, everything inside will be saved as result of it
 # '[0-9]* kB' match 0-9 zero or more times and kB must be end of it.
-# '\' - escape parenthisis
+# '\' - escape parenthesis
 # ')' - capture group close
 # '/' subsitution end, replace start
 # '\1' - everything from capture group
