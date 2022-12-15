@@ -46,6 +46,10 @@ WHT='\e[0;37m'
 # '\1' - everything from capture group
 # '/' - end replace
 
+# Fetches memory information from /proc/meminfo
+# Desired feild captured with case, sed extracts value
+# numfmt converts kB to more readable format
+
 while read -r REPLY; do
     case "${REPLY}" in
         (MemTotal:*)        memtotal=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000 --suffix=B --format="%9.2f" --invalid='ignore') ;;
@@ -94,6 +98,7 @@ $yellowpart ███   ████   █████   █████   █�
                                     Per CPU: $(printf "\t\t") ${per_cpu:-null}
                                     HugePages Free: $(printf "\t") ${hugepg_free:-null}                                                                           
                                     HugePages Total: $(printf "\t") ${hugepg_total:-null}
+                                    
                                     $colorblocks
 
 EOF
