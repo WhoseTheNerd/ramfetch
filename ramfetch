@@ -79,21 +79,21 @@ cat <<EOF
 
 $greenpart   ████████████████████████████     $host_user
 $greenpart ████████████████████████████████ $end   -------------
-$greenpart ████      ████      ███      ███ $end  RAM Total: $(echo "\t\t") ${memtotal:-null}
-$greenpart ████      ████      ███      ███ $end  RAM Free: $(echo "\t\t") ${memfree:-null}
-$greenpart ████      ████      ███      ███ $end  RAM Available: $(echo "\t") ${memavailable:-null}
-$greenpart ████      ████      ███      ███ $end  Buffers: $(echo "\t\t") ${buffers:-null}
-$greenpart ████████████████████████████████$end   Cached: $(echo "\t\t") ${cached:-null}
-$greenpart ███   ████   █████   █████   ███$end   Swap Total: $(echo "\t") ${swaptotal:-null}
-$yellowpart ███   ████   █████   █████   ███$end   Swap Free:  $(echo "\t") ${swapfree:-null}
-                                    Zswap: $(echo "\t\t") ${zswap:-null}
-                                    Zswapped: $(echo "\t\t") ${zswapped:-null}
-                                    Swap Cached: $(echo "\t") ${swapcached:-null}
-                                    Dirty: $(echo "\t\t") ${dirty:-null}
-                                    Kernel Stack: $(echo "\t") ${kernel_stack:-null}
-                                    Per CPU: $(echo "\t\t") ${per_cpu:-null}
-                                    HugePages Free: $(echo "\t") ${hugepg_free:-null}                                                                           
-                                    HugePages Total: $(echo "\t") ${hugepg_total:-null}
+$greenpart ████      ████      ███      ███ $end  RAM Total: $(printf "\t\t") ${memtotal:-null}
+$greenpart ████      ████      ███      ███ $end  RAM Free: $(printf "\t\t") ${memfree:-null}
+$greenpart ████      ████      ███      ███ $end  RAM Available: $(printf "\t") ${memavailable:-null}
+$greenpart ████      ████      ███      ███ $end  Buffers: $(printf "\t\t") ${buffers:-null}
+$greenpart ████████████████████████████████$end   Cached: $(printf "\t\t") ${cached:-null}
+$greenpart ███   ████   █████   █████   ███$end   Swap Total: $(printf "\t") ${swaptotal:-null}
+$yellowpart ███   ████   █████   █████   ███$end   Swap Free:  $(printf "\t") ${swapfree:-null}
+                                    Zswap: $(printf "\t\t") ${zswap:-null}
+                                    Zswapped: $(printf "\t\t") ${zswapped:-null}
+                                    Swap Cached: $(printf "\t") ${swapcached:-null}
+                                    Dirty: $(printf "\t\t") ${dirty:-null}
+                                    Kernel Stack: $(printf "\t") ${kernel_stack:-null}
+                                    Per CPU: $(printf "\t\t") ${per_cpu:-null}
+                                    HugePages Free: $(printf "\t") ${hugepg_free:-null}                                                                           
+                                    HugePages Total: $(printf "\t") ${hugepg_total:-null}
                                     $colorblocks
 
 EOF
