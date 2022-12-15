@@ -3,13 +3,16 @@ on: [pull_request]
 
 jobs:
   reviewdog:
-    name: Reviewdog
+    name: runner / shellcheck
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Misspell
         uses: reviewdog/action-misspell@v1
+      - uses: actions/checkout@v1
+      - name: shellcheck
+        uses: reviewdog/action-shellcheck@v1
         with:
           github_token: ${{ secrets.github_token }}
           locale: "US"
