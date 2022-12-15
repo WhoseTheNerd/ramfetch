@@ -38,30 +38,35 @@ WHT='\e[0;37m'
 # '[^0-9]*' - match all except 0-9 zero or more times
 # '\' - escape parenthesis
 # '(' - capture group, everything inside will be saved as result of it
-# '[0-9]* kB' match 0-9 zero or more times and kB must be end of it.
+# '[0-9]*' match 0-9 zero or more times exluding unit (' kB') [unit is always kB]
 # '\' - escape parenthesis
 # ')' - capture group close
+# ' kB' -
 # '/' subsitution end, replace start
 # '\1' - everything from capture group
 # '/' - end replace
 
-while read -r; do
+# Fetches memory information from /proc/meminfo
+# Desired feild captured with case, sed extracts value
+# numfmt converts kB to more readable format
+
+while read -r REPLY; do
     case "${REPLY}" in
-        (MemTotal:*)        memtotal=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
-        (MemFree:*)         memfree=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
-        (MemAvailable:*)    memavailable=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
-        (HugePages_Free:*)  hugepg_free=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\)/\1/' | numfmt --g) ;;                                            
-        (HugePages_Total:*) hugepg_total=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\)/\1/' | numfmt --g) ;; 
-        (Buffers:*)         buffers=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
-        (Cached:*)          cached=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
-        (SwapTotal:*)       swaptotal=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
-        (SwapFree:*)        swapfree=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
-        (Zswap:*)           zswap=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
-        (Zswapped:*)        zswapped=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
-        (SwapCached:*)      swapcached=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
-        (Dirty:*)           dirty=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
-        (KernelStack:*)     kernel_stack=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g ) ;;
-        (Percpu:*)          per_cpu=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]* kB\)/\1/' | numfmt --g) ;;
+        (MemTotal:*)        memtotal=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000 --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (MemFree:*)         memfree=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000 --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (MemAvailable:*)    memavailable=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000 --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (HugePages_Free:*)  hugepg_free=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\)/\1/' | numfmt --to=iec-i --from-unit=1000 --suffix=B --format="%9.2f" --invalid='ignore') ;;                                            
+        (HugePages_Total:*) hugepg_total=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\)/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;; 
+        (Buffers:*)         buffers=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (Cached:*)          cached=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (SwapTotal:*)       swaptotal=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (SwapFree:*)        swapfree=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (Zswap:*)           zswap=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (Zswapped:*)        zswapped=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (SwapCached:*)      swapcached=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (Dirty:*)           dirty=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (KernelStack:*)     kernel_stack=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (Percpu:*)          per_cpu=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
     esac
 done < /proc/meminfo
 
@@ -78,22 +83,22 @@ cat <<EOF
 
 $greenpart   ████████████████████████████     $host_user
 $greenpart ████████████████████████████████ $end   -------------
-$greenpart ████      ████      ███      ███ $end  RAM Total: ${memtotal:-null}
-$greenpart ████      ████      ███      ███ $end  RAM Free: ${memfree:-null}
-$greenpart ████      ████      ███      ███ $end  RAM Available: ${memavailable:-null}
-$greenpart ████      ████      ███      ███ $end  Buffers: ${buffers:-null}
-$greenpart ████████████████████████████████$end   Cached: ${cached:-null}
-$greenpart ███   ████   █████   █████   ███$end   Swap Total: ${swaptotal:-null}
-$yellowpart ███   ████   █████   █████   ███$end   Swap Free: ${swapfree:-null}
-                                    Zswap: ${zswap:-null}
-                                    Zswapped: ${zswapped:-null}
-                                    Swap Cached: ${swapcached:-null}
-                                    Dirty: ${dirty:-null}
-                                    Kernel Stack: ${kernel_stack:-null}
-                                    Per CPU: ${per_cpu:-null}
-                                    HugePages Free: ${hugepg_free:-null}                                                                            
-                                    HugePages Total: ${hugepg_total:-null}  
-
+$greenpart ████      ████      ███      ███ $end  RAM Total: $(printf "\t\t") ${memtotal:-null}
+$greenpart ████      ████      ███      ███ $end  RAM Free: $(printf "\t\t") ${memfree:-null}
+$greenpart ████      ████      ███      ███ $end  RAM Available: $(printf "\t") ${memavailable:-null}
+$greenpart ████      ████      ███      ███ $end  Buffers: $(printf "\t\t") ${buffers:-null}
+$greenpart ████████████████████████████████$end   Cached: $(printf "\t\t") ${cached:-null}
+$greenpart ███   ████   █████   █████   ███$end   Swap Total: $(printf "\t") ${swaptotal:-null}
+$yellowpart ███   ████   █████   █████   ███$end   Swap Free:  $(printf "\t") ${swapfree:-null}
+                                    Zswap: $(printf "\t\t") ${zswap:-null}
+                                    Zswapped: $(printf "\t\t") ${zswapped:-null}
+                                    Swap Cached: $(printf "\t") ${swapcached:-null}
+                                    Dirty: $(printf "\t\t") ${dirty:-null}
+                                    Kernel Stack: $(printf "\t") ${kernel_stack:-null}
+                                    Per CPU: $(printf "\t\t") ${per_cpu:-null}
+                                    HugePages Free: $(printf "\t") ${hugepg_free:-null}                                                                           
+                                    HugePages Total: $(printf "\t") ${hugepg_total:-null}
+                                    
                                     $colorblocks
 
 EOF
