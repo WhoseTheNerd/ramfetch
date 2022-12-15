@@ -1,8 +1,7 @@
-name: reviewdog
 on: [pull_request]
 jobs:
-  misspell:
-    name: runner / misspell
+  reviewdog_and_shellcheck:
+    name: reviewdog / shellcheck
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -14,5 +13,4 @@ jobs:
         uses: reviewdog/action-shellcheck@v1
         with:
           github_token: ${{ secrets.github_token }}
-          locale: "US"
           reporter: github-pr-review
