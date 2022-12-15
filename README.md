@@ -7,7 +7,7 @@
     <img src="https://img.shields.io/github/forks/gentoo-btw/ramfetch?style=for-the-badge">
   </div>
   <div>
-<img src="https://user-images.githubusercontent.com/119129086/207677786-5c39fd20-30fa-49fb-a22f-e4267e4dfb2d.png">
+<img src="https://user-images.githubusercontent.com/119129086/207885275-45d4a65b-cd06-4b7b-a348-1e84f731d1bb.png">
 </div>
 <br>
 </div>
