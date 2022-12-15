@@ -19,9 +19,9 @@ Clone this repo.
 ```bash
 $ git clone https://github.com/gentoo-btw/ramfetch
 ```
-Install ramfetch using `make`.
+Install ramfetch using `make install`.
 ```bash
-# make
+# make install
 ```
 ## 1.1 - Manual install
 Copy the ramfetch file to /usr/local/bin.
