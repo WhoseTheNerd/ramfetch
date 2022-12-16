@@ -9,6 +9,7 @@ install:
 
 uninstall:
 	@echo "==> ramfetch v0.1.2 by gentoo-btw"
+	@echo " "
 	@echo "==> Uninstalling ramfetch v0.1.2.."
 	@rm -rf $(PREFIX)/local/bin/ramfetch
 	@echo "==> Finished."
