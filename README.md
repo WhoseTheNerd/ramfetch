@@ -19,11 +19,13 @@ ramfetch is a fetch which displays memory info using /proc/meminfo. if you want 
 
 New changes in the first (stable) release which is v1.0.0:
 
-- Replaced `:` with `->`
+- Replaced `:` with `->`.
 
 - Colorblocks became thick.
 
 - Added help and version option.
+
+- Fixed green color bug in tty sessions.
 
 # 1 - Install
 Clone this repo.
