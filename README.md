@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fatrox%2Fsync-dotenv%2Fbadge">
   </div>
   <div>
-<img src="https://user-images.githubusercontent.com/119129086/207885275-45d4a65b-cd06-4b7b-a348-1e84f731d1bb.png">
+<img src="https://user-images.githubusercontent.com/119129086/208178135-ec7c69da-4967-44b2-b056-306deced2261.png">
 </div>
 <br>
 </div>
