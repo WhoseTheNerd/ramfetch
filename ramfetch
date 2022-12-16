@@ -38,7 +38,7 @@ CYN='\e[0;36m'
 WHT='\e[0;37m'
 
 # sets version
-RAMFETCH_VER="v1.0.0-stable"
+RAMFETCH_VER="v1.0.0"
 
 # help and version
 [[ $@ =~ --help|-h ]] && {
