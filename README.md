@@ -18,8 +18,11 @@
 ramfetch is a fetch which displays memory info using /proc/meminfo. if you want to install ramfetch follow the steps below. it's really simple.
 
 New changes in the first (stable) release which is v1.0.0:
+
 Replaced `:` with `->`
+
 Colorblocks became thick.
+
 Added help and version option.
 
 # 1 - Install
