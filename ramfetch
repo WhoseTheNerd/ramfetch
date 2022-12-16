@@ -21,16 +21,47 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+
 # colors
 BLK='\e[0;30m'
 RED='\e[0;31m'
-GRN='\e[2;32m'
+# if the terminal is a tty. make the green color for tty sessions. if it's not. make the green color for graphical consoles.
+if [[ "$TERM" = "linux" ]]; then
+GRN='\e[1;32m'
+else
+GRN="\e[2;32m"
+fi
 YEL='\e[0;33m'
 BLU='\e[0;34m'
 PURP='\e[0;35m'
 CYN='\e[0;36m'
 WHT='\e[0;37m'
 
+# sets version
+RAMFETCH_VER="v1.0.0-stable"
+
+# help and version
+[[ $@ =~ --help|-h ]] && {
+cat <<EOF
+
+=> ramfetch version v1.0.0
+
+Usage:
+    --help (or -h for short) -- shows this help
+    --version (or -v for short) -- shows version
+
+EOF
+exit 0
+}
+[[ $@ =~ --version|-v ]] && {
+cat <<EOF
+
+=> ramfetch version $RAMFETCH_VER. made by gentoo-btw
+https://github.com/gentoo-btw/ramfetch
+
+EOF
+exit 0
+}
 # Sed input. Basically use regex to get the number + kB part and replace it itself to ensure the capture group is printed
 # 's/[^0-9]*\([0-9]* kB\)/\1/'
 # 's' - subsitution
@@ -70,10 +101,11 @@ while read -r REPLY; do
     esac
 done < /proc/meminfo
 
-# colorblocks/hostname
-HOSTNAME=$(hostname)
+# colorblocks/hostname, and the green arrow
+GRN_ARROW="$(printf ${GRN}"->"${WHT})"
+HOSTNAME="$(hostname)"
 host_user="$(printf "%b%s%b%c%b%s%b" "${GRN}" "$USER" "${WHT}" "@" "${YEL}" "$HOSTNAME" "${WHT}")"
-colorblocks="$(printf "%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b" "${WHITE}" "██" "${RED}" "██" "${GRN}" "██" "${BLU}" "██" "${YEL}" "██" "${PURP}" "██" "${CYN}" "██" "${BLK}" "██" "${WHT}")"
+colorblocks="$(printf "%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b" "${BLK}" "███" "${RED}" "███" "${GRN}" "███" "${BLU}" "███" "${YEL}" "███" "${PURP}" "███" "${CYN}" "███" "${WHT}" "███" "${WHT}")"
 # for ascii logo
 yellowpart="$(printf "%b" "${YEL}")"
 greenpart="$(printf "%b" "${GRN}")"
@@ -82,22 +114,22 @@ end="$(printf "%b" "${WHT}")"
 cat <<EOF
 
 $greenpart   ████████████████████████████     $host_user
-$greenpart ████████████████████████████████ $end   -------------
-$greenpart ████      ████      ███      ███ $end  RAM Total: $(printf "\t\t") ${memtotal:-null}
-$greenpart ████      ████      ███      ███ $end  RAM Free: $(printf "\t\t") ${memfree:-null}
-$greenpart ████      ████      ███      ███ $end  RAM Available: $(printf "\t") ${memavailable:-null}
-$greenpart ████      ████      ███      ███ $end  Buffers: $(printf "\t\t") ${buffers:-null}
-$greenpart ████████████████████████████████$end   Cached: $(printf "\t\t") ${cached:-null}
-$greenpart ███   ████   █████   █████   ███$end   Swap Total: $(printf "\t") ${swaptotal:-null}
-$yellowpart ███   ████   █████   █████   ███$end   Swap Free:  $(printf "\t") ${swapfree:-null}
-                                    Zswap: $(printf "\t\t") ${zswap:-null}
-                                    Zswapped: $(printf "\t\t") ${zswapped:-null}
-                                    Swap Cached: $(printf "\t") ${swapcached:-null}
-                                    Dirty: $(printf "\t\t") ${dirty:-null}
-                                    Kernel Stack: $(printf "\t") ${kernel_stack:-null}
-                                    Per CPU: $(printf "\t\t") ${per_cpu:-null}
-                                    HugePages Free: $(printf "\t") ${hugepg_free:-null}                                                                           
-                                    HugePages Total: $(printf "\t") ${hugepg_total:-null}
+$greenpart ████████████████████████████████$end   -------------
+$greenpart ████      ████      ███      ███$end   RAM Total $GRN_ARROW $(printf "\t") ${memtotal:-null}
+$greenpart ████      ████      ███      ███$end   RAM Free $GRN_ARROW $(printf "\t") ${memfree:-null}
+$greenpart ████      ████      ███      ███$end   RAM Available $GRN_ARROW $(printf "\t") ${memavailable:-null}
+$greenpart ████      ████      ███      ███$end   Buffers $GRN_ARROW $(printf "\t\t") ${buffers:-null}
+$greenpart ████████████████████████████████$end   Cached $GRN_ARROW $(printf "\t\t") ${cached:-null}
+$greenpart ███   ████   █████   █████   ███$end   Swap Total $GRN_ARROW  $(printf "\t") ${swaptotal:-null}
+$yellowpart ███   ████   █████   █████   ███$end   Swap Free $GRN_ARROW  $(printf "\t") ${swapfree:-null}
+                                    Zswap $GRN_ARROW $(printf "\t\t") ${zswap:-null}
+                                    Zswapped $GRN_ARROW $(printf "\t") ${zswapped:-null}
+                                    Swap Cached $GRN_ARROW $(printf "\t") ${swapcached:-null}
+                                    Dirty $GRN_ARROW $(printf "\t\t") ${dirty:-null}
+                                    Kernel Stack $GRN_ARROW $(printf "\t") ${kernel_stack:-null}
+                                    Per CPU $GRN_ARROW $(printf "\t\t") ${per_cpu:-null}
+                                    HugePages Free $GRN_ARROW $(printf "\t") ${hugepg_free:-null}
+                                    HugePages Total $GRN_ARROW $(printf "\t") ${hugepg_total:-null}
                                     
                                     $colorblocks
 
