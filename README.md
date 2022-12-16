@@ -4,7 +4,7 @@
     <p>a fetch which displays memory info using /proc/meminfo.</p>
     <img src="https://img.shields.io/github/license/gentoo-btw/ramfetch?style=flat-square">
     <img src="https://img.shields.io/github/directory-file-count/gentoo-btw/ramfetch?style=flat-square">
-    <img src="https://img.shields.io/github/last-commit/gentoo-btw/ramfetchh?style=flat-square">
+    <img src="https://img.shields.io/github/last-commit/gentoo-btw/ramfetch?style=flat-square">
     <img src="https://img.shields.io/github/forks/gentoo-btw/ramfetch?style=flat-square">
     <img src="https://img.shields.io/github/stars/gentoo-btw/ramfetch?style=flat-square">
   </div>
