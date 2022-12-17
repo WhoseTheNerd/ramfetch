@@ -22,15 +22,21 @@
 # SOFTWARE.
 
 
-# colors
+# colors for tty sessions
+if [[ "$TERM" = "linux" ]]; then
 BLK='\e[0;30m'
 RED='\e[0;31m'
-# if the terminal is a tty. make the green color for tty sessions. if it's not. make the green color for graphical consoles.
-if [[ "$TERM" = "linux" ]]; then
-GRN='\e[1;32m'
-else
-GRN="\e[2;32m"
+GRN="\e[1;32m"
+YEL='\e[1;33m'
+BLU='\e[0;34m'
+PURP='\e[0;35m'
+CYN='\e[0;36m'
+WHT='\e[0;37m'
 fi
+# colors for gui
+BLK='\e[0;30m'
+RED='\e[0;31m'
+GRN="\e[2;32m"
 YEL='\e[0;33m'
 BLU='\e[0;34m'
 PURP='\e[0;35m'
