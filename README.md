@@ -17,7 +17,7 @@
 <br>
 </div>
 
-- Top image is devlocalhost's fork of ramfetch.
+- Top image is [devlocalhost's fork](https://github.com/devlocalhost/ramfetch) of ramfetch.
 
 - Down image is what ramfetch looks like.
 
