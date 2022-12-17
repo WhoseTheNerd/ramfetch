@@ -12,14 +12,22 @@
   <div>
 <br>
 <img src="https://user-images.githubusercontent.com/119129086/208178135-ec7c69da-4967-44b2-b056-306deced2261.png">
-<img src="https://user-images.githubusercontent.com/119129086/208246044-d7239c46-12ca-430a-8fe7-025c3d89b485.png">
 </div>
 <br>
 </div>
 
-- Uppper image is what ramfetch looks like.
+### Forks
+<!-- ramfetch-forks -->
+<details markdown='1'><summary>(1) ramfetch forks</summary>
 
-- Lower image is [devlocalhost's fork](https://github.com/devlocalhost/ramfetch) of ramfetch.
+<h4>1 - devlocalhost's fork<h4>
+
+https://github.com/devlocalhost/ramfetch
+
+<br>
+<img src="https://user-images.githubusercontent.com/119129086/208246044-d7239c46-12ca-430a-8fe7-025c3d89b485.png">
+</div></details>
+<!-- end ramfetch-forks -->
 
 ramfetch is a fetch which displays memory info using /proc/meminfo. if you want to install ramfetch follow the steps below. it's really simple.
 
