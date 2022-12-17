@@ -29,6 +29,8 @@ https://github.com/devlocalhost/ramfetch
 </div></details>
 <!-- end ramfetch-forks -->
 
+---
+
 ramfetch is a fetch which displays memory info using /proc/meminfo. if you want to install ramfetch follow the steps below. it's really simple.
 
 
