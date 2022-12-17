@@ -32,7 +32,7 @@ BLU='\e[0;34m'
 PURP='\e[0;35m'
 CYN='\e[0;36m'
 WHT='\e[0;37m'
-fi
+else
 # colors for gui
 BLK='\e[0;30m'
 RED='\e[0;31m'
@@ -42,6 +42,7 @@ BLU='\e[0;34m'
 PURP='\e[0;35m'
 CYN='\e[0;36m'
 WHT='\e[0;37m'
+fi
 
 # sets version
 RAMFETCH_VER="v1.0.0"
