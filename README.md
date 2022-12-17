@@ -10,10 +10,16 @@
     <img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fatrox%2Fsync-dotenv%2Fbadge">
   </div>
   <div>
+<br>
+<img src="https://user-images.githubusercontent.com/119129086/208246044-d7239c46-12ca-430a-8fe7-025c3d89b485.png">
 <img src="https://user-images.githubusercontent.com/119129086/208178135-ec7c69da-4967-44b2-b056-306deced2261.png">
 </div>
 <br>
 </div>
+
+- Left image is devlocalhost's fork of ramfetch.
+
+- Right image is what ramfetch looks like.
 
 ramfetch is a fetch which displays memory info using /proc/meminfo. if you want to install ramfetch follow the steps below. it's really simple.
 
