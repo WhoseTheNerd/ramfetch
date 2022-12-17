@@ -17,9 +17,9 @@
 <br>
 </div>
 
-- Down image is devlocalhost's fork of ramfetch.
+- Top image is devlocalhost's fork of ramfetch.
 
-- Top image is what ramfetch looks like.
+- Down image is what ramfetch looks like.
 
 ramfetch is a fetch which displays memory info using /proc/meminfo. if you want to install ramfetch follow the steps below. it's really simple.
 
