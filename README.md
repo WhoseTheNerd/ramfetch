@@ -33,6 +33,7 @@ https://github.com/devlocalhost/ramfetch
 
 ramfetch is a fetch which displays memory info using /proc/meminfo. if you want to install ramfetch follow the steps below. it's really simple. you can also test ramfetch without installing it.
 
+[https://github.com/gentoo-btw/ramfetch/tree/81fd3a70db6e3bd813cf21385afd80037b667f6b)(very first ramfetch commit)
 ## 1 - Requirements
 
 `bash` for ramfetch to work.
