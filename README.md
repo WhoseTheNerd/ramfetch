@@ -51,16 +51,10 @@ Install ramfetch using `make install`.
 # make install
 ```
 ### 1.1 - Manual install
-Copy the ramfetch file to /usr/local/bin.
+Copy the ramfetch file to /usr/local/bin. make it executable. and then execute it.
 ```bash
 # cp ramfetch /usr/local/bin
-```
-Make it executable.
-```bash
 # chmod +x /usr/local/bin/ramfetch
-```
-Execute ramfetch.
-```bash
 $ ramfetch
 ```
 
@@ -86,5 +80,5 @@ Uninstall ramfetch using `make`.
 ### 4.1 - Manual Uninstall
 Uninstall ramfetch by removing the ramfetch file.
 ```bash
-# rm -rf /usr/local/bin/ramfetch
+# rm -f /usr/local/bin/ramfetch
 ```
