@@ -2,7 +2,7 @@ name: reviewdog
 on: [pull_request]
 jobs:
   reviewdog_and_shellcheck:
-    name: reviewdog / shellcheck
+    name: shellcheck / misspell
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
