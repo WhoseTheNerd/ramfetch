@@ -33,14 +33,14 @@ https://github.com/devlocalhost/ramfetch
 
 ramfetch is a fetch which displays memory info using /proc/meminfo. if you want to install ramfetch follow the steps below. it's really simple. you can also test ramfetch without installing it.
 
-# 1 - Requirements
+## 1 - Requirements
 
 `bash` for ramfetch to work.
 
 `make` to install ramfetch.
 
 
-# 2 - Install
+## 2 - Install
 
 Clone this repo.
 ```bash
@@ -50,7 +50,7 @@ Install ramfetch using `make install`.
 ```bash
 # make install
 ```
-## 1.1 - Manual install
+### 1.1 - Manual install
 Copy the ramfetch file to /usr/local/bin.
 ```bash
 # cp ramfetch /usr/local/bin
@@ -64,12 +64,12 @@ Execute ramfetch.
 $ ramfetch
 ```
 
-# 3 - Uninstall
+## 3 - Uninstall
 Uninstall ramfetch using `make`.
 ```bash
 # make uninstall
 ```
-## 3.1 - Manual Uninstall
+### 3.1 - Manual Uninstall
 Uninstall ramfetch by removing the ramfetch file.
 ```bash
 # rm -rf /usr/local/bin/ramfetch
