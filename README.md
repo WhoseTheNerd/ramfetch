@@ -64,12 +64,26 @@ Execute ramfetch.
 $ ramfetch
 ```
 
-## 3 - Uninstall
+## 3 - Reinstall
+Reinstall ramfetch using `make`.
+```bash
+# make reinstall
+```
+### 3.1 - Manual Reinstall
+Remove ramfetch and copy ramfetch from the cloned dir and make it executable. and then execute it.
+```bash
+# rm -f /usr/local/bin/ramfetch
+# cp ramfetch /usr/local/bin
+# chmod +x /usr/local/bin/ramfetch
+$ ramfetch
+```
+
+## 4 - Uninstall
 Uninstall ramfetch using `make`.
 ```bash
 # make uninstall
 ```
-### 3.1 - Manual Uninstall
+### 4.1 - Manual Uninstall
 Uninstall ramfetch by removing the ramfetch file.
 ```bash
 # rm -rf /usr/local/bin/ramfetch
