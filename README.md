@@ -39,6 +39,7 @@ ramfetch is a fetch which displays memory info using /proc/meminfo. if you want 
 
 `make` to install ramfetch.
 
+
 # 2 - Install
 
 Clone this repo.
