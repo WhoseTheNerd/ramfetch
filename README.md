@@ -31,10 +31,16 @@ https://github.com/devlocalhost/ramfetch
 
 ---
 
-ramfetch is a fetch which displays memory info using /proc/meminfo. if you want to install ramfetch follow the steps below. it's really simple.
+ramfetch is a fetch which displays memory info using /proc/meminfo. if you want to install ramfetch follow the steps below. it's really simple. you can also test ramfetch without installing it.
 
+# 1 - Requirements
 
-# 1 - Install
+`bash` for ramfetch to work.
+
+`make` to install ramfetch.
+
+# 2 - Install
+
 Clone this repo.
 ```bash
 $ git clone https://github.com/gentoo-btw/ramfetch
@@ -57,12 +63,12 @@ Execute ramfetch.
 $ ramfetch
 ```
 
-# 2 - Uninstall
+# 3 - Uninstall
 Uninstall ramfetch using `make`.
 ```bash
 # make uninstall
 ```
-## 2.1 - Manual Uninstall
+## 3.1 - Manual Uninstall
 Uninstall ramfetch by removing the ramfetch file.
 ```bash
 # rm -rf /usr/local/bin/ramfetch
