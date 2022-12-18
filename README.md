@@ -50,7 +50,7 @@ Install ramfetch using `make install`.
 ```bash
 # make install
 ```
-### 1.1 - Manual install
+### 2.1 - Manual install
 Copy the ramfetch file to /usr/local/bin. make it executable. and then execute it.
 ```bash
 # cp ramfetch /usr/local/bin
