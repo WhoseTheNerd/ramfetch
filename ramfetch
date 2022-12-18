@@ -111,6 +111,7 @@ done < /proc/meminfo
 # colorblocks/hostname, and the green arrow
 GRN_ARROW="$(printf ${GRN}"->"${WHT})"
 HOSTNAME="$(hostname)"
+host_user_len=$(echo ${#HOSTNAME} + ${#USER} + 1 | bc)
 host_user="$(printf "%b%s%b%c%b%s%b" "${GRN}" "$USER" "${WHT}" "@" "${YEL}" "$HOSTNAME" "${WHT}")"
 colorblocks="$(printf "%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b%s%b" "${BLK}" "███" "${RED}" "███" "${GRN}" "███" "${BLU}" "███" "${YEL}" "███" "${PURP}" "███" "${CYN}" "███" "${WHT}" "███" "${WHT}")"
 # for ascii logo
@@ -121,7 +122,7 @@ end="$(printf "%b" "${WHT}")"
 cat <<EOF
 
 $greenpart   ████████████████████████████     $host_user
-$greenpart ████████████████████████████████$end   -------------
+$greenpart ████████████████████████████████$end   $(printf '%0.s-' $(seq 1 $host_user_len))
 $greenpart ████      ████      ███      ███$end   RAM Total $GRN_ARROW $(printf "\t") ${memtotal:-null}
 $greenpart ████      ████      ███      ███$end   RAM Free $GRN_ARROW $(printf "\t") ${memfree:-null}
 $greenpart ████      ████      ███      ███$end   RAM Available $GRN_ARROW $(printf "\t") ${memavailable:-null}
