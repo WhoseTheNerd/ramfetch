@@ -1,7 +1,7 @@
 PREFIX ?= /usr
 
 install:
-	@printf "=> ramfetch version v1.0.0"\n
+	@printf "=> ramfetch version v1.0.0\n"
 	@test -f /bin/bash && printf "\e[0;32m=>\e[0;m Found bash at /bin/bash.\n"
 	@test -f ./ramfetch && printf "\e[0;32m=>\e[0;m Found ramfetch file at ./ramfetch\n"
 	@test -f /bin/bash || printf "\e[0;31m=>\e[0;m Bash not found. Aborting..\n" || exit 1
