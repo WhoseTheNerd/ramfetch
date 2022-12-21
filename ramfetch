@@ -90,21 +90,21 @@ exit 0
 
 while read -r REPLY; do
     case "${REPLY}" in
-        (MemTotal:*)        memtotal=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000 --suffix=B --format="%9.2f" --invalid='ignore') ;;
-        (MemFree:*)         memfree=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000 --suffix=B --format="%9.2f" --invalid='ignore') ;;
-        (MemAvailable:*)    memavailable=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000 --suffix=B --format="%9.2f" --invalid='ignore') ;;
-        (HugePages_Free:*)  hugepg_free=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\)/\1/' | numfmt --to=iec-i --from-unit=1000 --suffix=B --format="%9.2f" --invalid='ignore') ;;                                            
-        (HugePages_Total:*) hugepg_total=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\)/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;; 
-        (Buffers:*)         buffers=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
-        (Cached:*)          cached=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
-        (SwapTotal:*)       swaptotal=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
-        (SwapFree:*)        swapfree=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
-        (Zswap:*)           zswap=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
-        (Zswapped:*)        zswapped=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
-        (SwapCached:*)      swapcached=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
-        (Dirty:*)           dirty=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
-        (KernelStack:*)     kernel_stack=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
-        (Percpu:*)          per_cpu=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1000  --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (MemTotal:*)        memtotal=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (MemFree:*)         memfree=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (MemAvailable:*)    memavailable=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (HugePages_Free:*)  hugepg_free=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\)/\1/' | numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%9.2f" --invalid='ignore') ;;                                            
+        (HugePages_Total:*) hugepg_total=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\)/\1/' | numfmt --to=iec-i --from-unit=1024  --suffix=B --format="%9.2f" --invalid='ignore') ;; 
+        (Buffers:*)         buffers=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1024  --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (Cached:*)          cached=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (SwapTotal:*)       swaptotal=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (SwapFree:*)        swapfree=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1024  --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (Zswap:*)           zswap=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1024  --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (Zswapped:*)        zswapped=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (SwapCached:*)      swapcached=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (Dirty:*)           dirty=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (KernelStack:*)     kernel_stack=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1024  --suffix=B --format="%9.2f" --invalid='ignore') ;;
+        (Percpu:*)          per_cpu=$(echo "$REPLY" | sed 's/[^0-9]*\([0-9]*\) kB/\1/' | numfmt --to=iec-i --from-unit=1024 --suffix=B --format="%9.2f" --invalid='ignore') ;;
     esac
 done < /proc/meminfo
 
