@@ -45,13 +45,12 @@ WHT='\e[0;37m'
 fi
 
 # sets version
-RAMFETCH_VER="v1.0.0"
+RAMFETCH_VER="v1.0.1"
 
 # help and version
 [[ $@ =~ --help|-h ]] && {
 cat <<EOF
-
-=> ramfetch version v1.0.0
+$BLU=>$WHT ramfetch version v1.0.0
 
 Usage:
     --help (or -h for short) -- shows this help
@@ -62,8 +61,7 @@ exit 0
 }
 [[ $@ =~ --version|-v ]] && {
 cat <<EOF
-
-=> ramfetch version $RAMFETCH_VER. made by gentoo-btw
+$BLU=>$WHT ramfetch version $RAMFETCH_VER. made by gentoo-btw
 https://github.com/gentoo-btw/ramfetch
 
 EOF
