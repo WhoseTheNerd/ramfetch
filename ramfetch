@@ -50,7 +50,7 @@ RAMFETCH_VER="v1.0.1"
 # help and version
 [[ $@ =~ --help|-h ]] && {
 cat <<EOF
-$BLU=>$WHT ramfetch version v1.0.0
+$BLU=>$WHT ramfetch version $RAMFETCH_VER
 
 Usage:
     --help (or -h for short) -- shows this help
