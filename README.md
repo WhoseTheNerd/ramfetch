@@ -51,6 +51,9 @@ Install ramfetch using `make install`.
 ```bash
 # make install
 ```
+
+---
+
 ### Manual install
 Install ramfetch using `install`
 ```bash
@@ -61,6 +64,7 @@ Reinstall ramfetch using `make`.
 ```bash
 # make reinstall
 ```
+
 ### Manual Reinstall
 Remove ramfetch and install ramfetch using `install` and then execute it.
 ```bash
