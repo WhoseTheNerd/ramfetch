@@ -29,7 +29,6 @@ https://github.com/devlocalhost/ramfetch
 </div></details>
 <!-- end ramfetch-forks -->
 
----
 
 ramfetch is a fetch which displays memory info using /proc/meminfo. if you want to install ramfetch follow the steps below. it's really simple. you can also test ramfetch without installing it.
 
@@ -42,13 +41,14 @@ ramfetch is a fetch which displays memory info using /proc/meminfo. if you want 
 
 ## 2 - Install
 
-### AUR
+### 2.1 - AUR
 To install ramfetch from the AUR. install it by using your favorite AUR helper.
 ```bash
 $ yay -S ramfetch-git
 ```
 ---
 
+### 2.2 - Installing ramfetch from github
 Clone this repo.
 ```bash
 $ git clone https://github.com/gentoo-btw/ramfetch
@@ -57,7 +57,7 @@ Install ramfetch using `make install`.
 ```bash
 # make install
 ```
-### 2.1 - Manual install
+### 2.3 - Manual install
 Copy the ramfetch file to /usr/local/bin. make it executable. and then execute it.
 ```bash
 # cp ramfetch /usr/local/bin
