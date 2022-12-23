@@ -11,9 +11,8 @@
   </div>
   <div>
 <br>
-<img src="https://user-images.githubusercontent.com/119129086/208178135-ec7c69da-4967-44b2-b056-306deced2261.png">
+<img width="600" src="https://github.com/gentoo-btw/ramfetch/blob/main/assets/example-pic.png?raw=true">
 </div>
-<br>
 </div>
 
 ### Forks
