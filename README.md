@@ -20,9 +20,9 @@ ramfetch is a fetch which displays memory info using /proc/meminfo. if you want 
 
 ramfetch works on:
 
-&check&; Linux
+&check; Linux
 
-&check&; Android, using termux (no root)
+&check; Android, using termux (no root)
 
 
 NOTE: You cannot install ramfetch on android. You need to add ramfetch to your PATH.
