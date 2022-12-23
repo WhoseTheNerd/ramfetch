@@ -41,7 +41,7 @@ ramfetch is a fetch which displays memory info using /proc/meminfo. if you want 
 ## 2 - Install
 
 ### 2.1 - AUR
-To install ramfetch from the AUR. install it by using your favorite AUR helper. (e.g yay)
+To install ramfetch from the AUR. install it by using your favorite AUR helper. (e.g yay) thanks to [jahway603](https://github.com/jahway603)
 ```bash
 $ yay -S ramfetch-git
 ```
