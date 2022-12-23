@@ -27,21 +27,21 @@ ramfetch works on:
 
 NOTE: You cannot install ramfetch on android. You need to add ramfetch to your PATH.
 
-## Requirements
+# Requirements
 
 `bash` for ramfetch to work.
 
 `make` to install ramfetch.
 
-## Install
+# Install
 
-### AUR
+## AUR
 To install ramfetch from the AUR. install it by using your favorite AUR helper. (e.g yay) thanks to [jahway603](https://github.com/jahway603)
 ```bash
 $ yay -S ramfetch-git
 ```
 
-### Github
+## Github
 Clone this repo.
 ```bash
 $ git clone https://github.com/gentoo-btw/ramfetch
@@ -50,18 +50,18 @@ Install ramfetch using `make install`.
 ```bash
 # make install
 ```
-### 2.3 - Manual install
+## Manual install
 Install ramfetch using `install`
 ```bash
 # install -Dm755 ramfetch /usr/local/bin/ramfetch
 ```
 
-## Reinstall
+# Reinstall
 Reinstall ramfetch using `make`.
 ```bash
 # make reinstall
 ```
-### Manual Reinstall
+## Manual Reinstall
 Remove ramfetch and install ramfetch using `install` and then execute it.
 ```bash
 # rm -f /usr/local/bin/ramfetch
@@ -69,12 +69,12 @@ Remove ramfetch and install ramfetch using `install` and then execute it.
 $ ramfetch
 ```
 
-## Uninstall
+# Uninstall
 Uninstall ramfetch using `make`.
 ```bash
 # make uninstall
 ```
-### Manual Uninstall
+## Manual Uninstall
 Uninstall ramfetch by removing the ramfetch file.
 ```bash
 # rm -f /usr/local/bin/ramfetch
