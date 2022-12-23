@@ -44,13 +44,15 @@ CYN='\e[0;36m'
 WHT='\e[0;37m'
 fi
 
+# blue arrow
+BLUE_ARROW="$(printf $BLU => $WHT)"
 # sets version
 RAMFETCH_VER="v1.0.1"
 
 # help and version
 [[ $@ =~ --help|-h ]] && {
 cat <<EOF
-$BLU=>$WHT ramfetch version $RAMFETCH_VER
+$BLUE_ARROW ramfetch version $RAMFETCH_VER
 
 Usage:
     --help (or -h for short) -- shows this help
@@ -61,7 +63,7 @@ exit 0
 }
 [[ $@ =~ --version|-v ]] && {
 cat <<EOF
-$BLU=>$WHT ramfetch version $RAMFETCH_VER. made by gentoo-btw
+$BLUE_ARROW ramfetch version $RAMFETCH_VER. made by gentoo-btw
 https://github.com/gentoo-btw/ramfetch
 
 EOF
