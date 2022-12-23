@@ -37,7 +37,6 @@ ramfetch is a fetch which displays memory info using /proc/meminfo. if you want 
 
 `make` to install ramfetch.
 
-
 ## 2 - Install
 
 ### 2.1 - AUR
@@ -45,7 +44,6 @@ To install ramfetch from the AUR. install it by using your favorite AUR helper. 
 ```bash
 $ yay -S ramfetch-git
 ```
----
 
 ### 2.2 - Github
 Clone this repo.
@@ -57,11 +55,9 @@ Install ramfetch using `make install`.
 # make install
 ```
 ### 2.3 - Manual install
-Copy the ramfetch file to /usr/local/bin. make it executable. and then execute it.
+Install ramfetch using `install`
 ```bash
-# cp ramfetch /usr/local/bin
-# chmod +x /usr/local/bin/ramfetch
-$ ramfetch
+# install -Dm755 ramfetch /usr/local/bin/ramfetch
 ```
 
 ## 3 - Reinstall
@@ -70,11 +66,10 @@ Reinstall ramfetch using `make`.
 # make reinstall
 ```
 ### 3.1 - Manual Reinstall
-Remove ramfetch and copy ramfetch from the cloned dir and make it executable. and then execute it.
+Remove ramfetch and install ramfetch using `install` and then execute it.
 ```bash
 # rm -f /usr/local/bin/ramfetch
-# cp ramfetch /usr/local/bin
-# chmod +x /usr/local/bin/ramfetch
+# install -Dm755 ramfetch /usr/local/bin/ramfetch
 $ ramfetch
 ```
 
