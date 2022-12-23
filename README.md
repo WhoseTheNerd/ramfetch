@@ -27,7 +27,7 @@ ramfetch works on:
 
 <b>NOTE: You cannot install ramfetch on android. You need to add ramfetch to your PATH.</b>
 
-## Requirements
+# Requirements
 
 `bash` for ramfetch to work.
 
