@@ -45,7 +45,7 @@ WHT='\e[0;37m'
 fi
 
 # blue arrow
-BLUE_ARROW="$( $BLU => $WHT)"
+BLUE_ARROW="$(echo $BLU => $WHT)"
 # sets version
 RAMFETCH_VER="v1.0.1"
 
