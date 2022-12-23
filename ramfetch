@@ -44,6 +44,7 @@ CYN='\e[0;36m'
 WHT='\e[0;37m'
 fi
 
+# blue arrow
 BLUE_ARROW="$(printf ${BLU}"->"${WHT})"
 # sets version
 RAMFETCH_VER="v1.0.1"
