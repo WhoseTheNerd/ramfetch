@@ -19,8 +19,11 @@
 ramfetch is a fetch which displays memory info using /proc/meminfo. if you want to install ramfetch follow the steps below. it's really simple. you can also test ramfetch without installing it.
 
 ramfetch works on:
-&check& Linux
-&check& Android, using termux (no root)
+
+&check&; Linux
+
+&check&; Android, using termux (no root)
+
 
 NOTE: You cannot install ramfetch on android. You could run `install -Dm755 ramfetch ../usr/bin/ramfetch` in termux. while your in the home dir.
 
