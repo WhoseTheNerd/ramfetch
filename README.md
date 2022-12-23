@@ -25,7 +25,7 @@ ramfetch works on:
 &check&; Android, using termux (no root)
 
 
-NOTE: You cannot install ramfetch on android.
+NOTE: You cannot install ramfetch on android. You need to add ramfetch to your PATH.
 
 ## 1 - Requirements
 
