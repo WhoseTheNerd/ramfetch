@@ -2,8 +2,8 @@
   <div>
     <h1>ramfetch</h1>
     <p>A fetch which displays memory info using /proc/meminfo.</p>
-    <img src="https://img.shields.io/github/license/gentoo-btw/ramfetch?style=flat-square&color=98971a&labelColor=504945">
-    <img src="https://shields.io/badge/made-with%20%20bash-green?logo=gnu-bash&style=flat-square&color=d79921&labelColor=504945">
+    <img src="https://img.shields.io/github/license/gentoo-btw/ramfetch?style=flat-square&color=d79921&labelColor=504945">
+    <img src="https://shields.io/badge/made-with%20%20bash-green?logo=gnu-bash&style=flat-square&color=98971a&labelColor=504945">
     <img src="https://img.shields.io/github/forks/gentoo-btw/ramfetch?style=flat-square&color=d79921&labelColor=504945">
     <img src="https://img.shields.io/github/stars/gentoo-btw/ramfetch?style=flat-square&color=98971a&labelColor=504945">
     <img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fatrox%2Fsync-dotenv%2Fbadge&color=d79921&labelColor=504945">
