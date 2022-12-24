@@ -31,7 +31,7 @@ ramfetch works on:
 
 `bash` for ramfetch to work.
 
-`make` to install ramfetch.
+`make` to install ramfetch. (optional)
 
 # Install
 
