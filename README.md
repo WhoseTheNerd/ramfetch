@@ -7,7 +7,7 @@
     <img src="https://img.shields.io/github/last-commit/gentoo-btw/ramfetch?style=flat-square">
     <img src="https://img.shields.io/github/forks/gentoo-btw/ramfetch?style=flat-square">
     <img src="https://img.shields.io/github/stars/gentoo-btw/ramfetch?style=flat-square">
-    <img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fatrox%2Fsync-dotenv%2Fbadge">
+    <img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fatrox%2Fsync-dotenv%2Fbadge?style=flat-sqaure">
   </div>
   <div>
 <br>
