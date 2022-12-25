@@ -10,7 +10,7 @@
   </div>
   <div>
 <br>
-<img width="600" src="https://github.com/gentoo-btw/ramfetch/blob/main/assets/example-pic.png?raw=true">
+<img width="450" src="https://user-images.githubusercontent.com/119129086/209479728-46b441c3-366e-4733-b63d-fb0e09479151.png">
 </div>
 </div>
 <br>
