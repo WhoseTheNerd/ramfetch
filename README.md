@@ -40,7 +40,6 @@ To install ramfetch from the AUR. install it by using your favorite AUR helper. 
 $ yay -S ramfetch-git
 ```
 
-
 ### Github
 Clone this repo.
 ```bash
