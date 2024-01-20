@@ -3,7 +3,7 @@ PREFIX ?= /usr
 install:
 	@printf "=> ramfetch version v1.0.1, and merry christmas :) \n"
 	@test -f /bin/bash && printf "\e[0;32m=>\e[0;m Found bash at /bin/bash.\n"
-	@test -f ./ramfetch4chirstmas && printf "\e[0;32m=>\e[0;m Found ramfetch file at ./ramfetch4christmas \n"
+	@test -f ./ramfetch4christmas && printf "\e[0;32m=>\e[0;m Found ramfetch file at ./ramfetch4christmas \n"
 	@test -f /bin/bash || printf "\e[0;31m=>\e[0;m Bash not found. Aborting..\n" || exit 1
 	@test -f ./ramfetch4christmas || printf "\e[0;31m=>\e[0;m ramfetch4chirstmas file not found, Aborting..\n" || exit 1
 	@printf "\e[0;34m=>\e[0;m install -Dm755 ramfetch4christmas /usr/local/bin/ramfetch\n"
